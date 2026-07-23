@@ -1,12 +1,496 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  {
+    title: "Coupe de cheveux",
+    description: "Coupes classiques ou modernes, ajustées à votre visage, votre style et votre routine.",
+    image: "/images/service-coupe-cheveux.jpg",
+    icon: "scissors",
+    href: "/services#coupe",
+  },
+  {
+    title: "Taille de barbe",
+    description: "Une barbe nette et bien dessinée, du léger entretien à la taille précise au rasoir.",
+    image: "/images/service-taille-de-barbe.jpg",
+    icon: "razor",
+    href: "/services#barbe",
+  },
+  {
+    title: "Soin du visage",
+    description: "Un moment de détente : nettoyage, serviette chaude, fini net et frais.",
+    image: "/images/service-soin-du-visage.jpg",
+    icon: "sparkle",
+    href: "/services#soin-visage",
+  },
+];
+
+const icons: Record<string, string> = {
+  scissors: `<circle cx="6" cy="6" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="18" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 7.6 20 18M20 6 8.2 16.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>`,
+  razor: `<path d="M5 5l9 9M14 5 5 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M13 13.5 18.5 19a2 2 0 1 1-2.8 2.8L10 16.3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>`,
+  sparkle: `<path d="M12 3l1.6 4.8L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.2L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>`,
+};
+
+const values = [
+  {
+    title: "Précision du geste",
+    text: "Chaque coupe et chaque taille de barbe est réalisée avec soin, sans précipitation.",
+  },
+  {
+    title: "Ambiance détendue",
+    text: "Un salon pensé pour se sentir bien, sans formalité inutile — juste un bon moment.",
+  },
+  {
+    title: "Deux barbiers, une exigence",
+    text: "Une équipe resserrée, disponible et attentive aux habitudes de chaque client.",
+  },
+  {
+    title: "Flexibles avec nos habitués",
+    text: "Sans rendez-vous parfois pour nos clients réguliers — on s'organise avec vous.",
+  },
+];
 ---
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apercu</title>
-</head>
-<body>
-  <h1>Apercu en cours de construction</h1>
-</body>
-</html>
+
+<Layout>
+  <Nav />
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-badges">
+          <span class="hero-badge">2 barbiers experts</span>
+          <span class="hero-badge">Coupe · Barbe · Soin du visage</span>
+          <span class="hero-badge">Sans rendez-vous pour nos habitués</span>
+        </div>
+        <h1>Une coupe précise, une ambiance détendue</h1>
+        <p class="hero-subtitle">
+          Barber Karim est un salon de coiffure homme à Sfax : coupe, taille de barbe et soin du
+          visage par une équipe de deux barbiers. Sur rendez-vous, ou parfois sans — surtout pour
+          nos clients réguliers.
+        </p>
+        <div class="hero-cta">
+          <a href="tel:+21653535535" class="btn btn-gold">Appeler le salon</a>
+          <a
+            href="https://wa.me/21653535535?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site"
+            class="btn btn-outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Écrire sur WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="walkin-band">
+      <div class="container walkin-inner">
+        <div class="walkin-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle>
+            <path d="M12 7.5v5l3.2 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="walkin-text">
+          <h2>Client régulier ? Passez quand vous voulez.</h2>
+          <p>
+            Nous acceptons parfois les clients sans rendez-vous, en particulier nos habitués. Pour
+            une première visite ou un créneau précis, un appel ou un message WhatsApp nous permet
+            de vous garantir une place.
+          </p>
+        </div>
+        <a href="/contact" class="btn btn-dark walkin-cta">Nous contacter</a>
+      </div>
+    </section>
+
+    <section class="section services-section">
+      <div class="container">
+        <span class="blade-mark">Nos prestations</span>
+        <h2 class="section-title">Trois prestations, une seule exigence</h2>
+        <p class="section-subtitle">
+          Coupe, barbe et soin du visage : chaque prestation est pensée pour un résultat net et
+          durable.
+        </p>
+
+        <div class="services-grid">
+          {services.map((service) => (
+            <a href={service.href} class="service-card">
+              <div class="service-image">
+                <img src={service.image} alt={service.title} loading="lazy" />
+              </div>
+              <div
+                class="service-icon"
+                set:html={`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">${icons[service.icon]}</svg>`}
+              />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </a>
+          ))}
+        </div>
+
+        <div class="services-cta">
+          <a href="/services" class="btn btn-outline-dark">Voir tous les services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section values-section">
+      <div class="container">
+        <span class="blade-mark">Pourquoi Barber Karim</span>
+        <h2 class="section-title">Un salon fait pour durer dans vos habitudes</h2>
+
+        <div class="values-grid">
+          {values.map((v) => (
+            <div class="value-card">
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-teaser">
+      <div class="container about-teaser-inner">
+        <div class="about-teaser-image">
+          <img src="/images/interieur-salon-barber-karim.jpg" alt="Intérieur du salon Barber Karim à Sfax" loading="lazy" />
+        </div>
+        <div class="about-teaser-content">
+          <span class="blade-mark">Le salon</span>
+          <h2 class="section-title">Deux barbiers, un même souci du détail</h2>
+          <p>
+            À Sfax, Barber Karim accueille ses clients dans un cadre moderne et sobre, pensé pour la
+            précision autant que pour la détente. Deux barbiers expérimentés se partagent le salon,
+            avec une attention particulière portée à ceux qui reviennent régulièrement.
+          </p>
+          <a href="/a-propos" class="btn btn-outline-dark">En savoir plus</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2>Envie d'une coupe nette ?</h2>
+          <p>Appelez-nous, écrivez sur WhatsApp, ou passez directement si vous êtes un habitué.</p>
+        </div>
+        <a href="/contact" class="btn btn-gold">Nous contacter</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 92svh;
+    display: flex;
+    align-items: flex-end;
+    background: url("/images/hero-barbier-coupe-cheveux.jpg") center/cover no-repeat, var(--color-ink);
+    padding-top: 72px;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(21, 19, 15, 0.5) 0%, rgba(21, 19, 15, 0.6) 40%, rgba(15, 13, 10, 0.95) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    max-width: 680px;
+    padding-bottom: 56px;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .hero-badge {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
+    max-width: 54ch;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* Walk-in priority band */
+  .walkin-band {
+    background: var(--color-gold-pale);
+    border-bottom: 1px solid var(--color-line);
+    padding: 34px 0;
+  }
+
+  .walkin-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .walkin-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .walkin-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .walkin-text h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .walkin-text p {
+    color: var(--color-charcoal);
+    font-size: 0.94rem;
+    max-width: 60ch;
+  }
+
+  .walkin-cta {
+    flex-shrink: 0;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .service-card {
+    display: block;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-line);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(21, 19, 15, 0.14);
+  }
+
+  .service-image {
+    height: 190px;
+    overflow: hidden;
+    background: #e9e4d8;
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--color-gold-pale);
+    color: var(--color-gold-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 20px 0;
+  }
+
+  .service-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+    margin: 16px 20px 8px;
+  }
+
+  .service-card p {
+    color: var(--color-slate);
+    font-size: 0.92rem;
+    margin: 0 20px 22px;
+  }
+
+  .services-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  /* Values */
+  .values-section {
+    background: var(--color-bone);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .value-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px 22px;
+    border: 1px solid var(--color-line);
+  }
+
+  .value-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    color: var(--color-gold-deep);
+  }
+
+  .value-card p {
+    color: var(--color-slate);
+    font-size: 0.92rem;
+  }
+
+  /* About teaser */
+  .about-teaser-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .about-teaser-image {
+    border-radius: 18px;
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .about-teaser-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-teaser-content p {
+    color: var(--color-slate);
+    margin: 14px 0 22px;
+  }
+
+  /* CTA band */
+  .cta-band {
+    background: var(--color-ink);
+    color: #fff;
+    padding: 48px 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .cta-inner h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media (min-width: 640px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .walkin-inner {
+      flex-direction: row;
+      align-items: center;
+    }
+    .walkin-cta {
+      margin-left: auto;
+    }
+  }
+
+  @media (min-width: 720px) {
+    .hero h1 {
+      font-size: 3.2rem;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+    }
+    .cta-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .about-teaser-inner {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+    }
+    .about-teaser-image {
+      height: 380px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

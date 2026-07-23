@@ -1,0 +1,253 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const values = [
+  { title: "Précision", text: "Chaque coupe et chaque taille de barbe est réalisée avec soin, sans précipitation." },
+  { title: "Ambiance détendue", text: "Un salon sobre et moderne, pensé pour se sentir à l'aise du premier au dernier geste." },
+  { title: "Deux barbiers, une équipe", text: "Une équipe resserrée, disponible et attentive aux habitudes de chaque client." },
+  { title: "Flexibilité", text: "Sans rendez-vous parfois pour nos clients réguliers — on s'adapte à vos horaires." },
+];
+---
+
+<Layout
+  title="À propos — Barber Karim | Salon de coiffure homme à Sfax"
+  description="Barber Karim, salon de coiffure homme à Sfax. Une équipe de 2 barbiers, une exigence de précision et une vraie flexibilité pour les clients réguliers."
+>
+  <Nav />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="blade-mark">À propos</span>
+        <h1 class="page-title">Un salon de coiffure homme pensé pour durer dans vos habitudes</h1>
+        <p class="page-subtitle">
+          Barber Karim accompagne les hommes de Sfax pour leur coupe, leur barbe et leur soin du
+          visage, dans un cadre moderne et une ambiance détendue.
+        </p>
+      </div>
+    </section>
+
+    <section class="section image-text">
+      <div class="container image-text-inner">
+        <div class="image-text-image">
+          <img src="/images/interieur-salon-barber-karim.jpg" alt="Intérieur du salon Barber Karim à Sfax" loading="lazy" />
+        </div>
+        <div class="image-text-content">
+          <span class="blade-mark">Notre approche</span>
+          <h2 class="section-title">Deux barbiers, une même exigence de précision</h2>
+          <p>
+            À Sfax, Barber Karim réunit deux barbiers expérimentés autour d'une même exigence :
+            une coupe nette, une barbe bien dessinée, et un accueil sans chichi. Le salon est pensé
+            pour être à la fois moderne et confortable — un lieu où l'on prend le temps de bien
+            faire les choses.
+          </p>
+          <p>
+            Beaucoup de nos clients reviennent régulièrement. C'est pour eux que nous restons
+            flexibles : sans rendez-vous parfois, quand le salon le permet, pour ne pas vous faire
+            perdre de temps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section values-section">
+      <div class="container">
+        <span class="blade-mark">Nos valeurs</span>
+        <h2 class="section-title">Ce qui guide chaque prestation</h2>
+
+        <div class="values-grid">
+          {values.map((v) => (
+            <div class="value-card">
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section">
+      <div class="container story-inner">
+        <span class="blade-mark">Notre histoire</span>
+        <h2 class="section-title">Contenu bientôt disponible</h2>
+        <p class="section-subtitle">
+          Cette section sera bientôt complétée avec l'histoire de Barber Karim. En attendant,
+          n'hésitez pas à nous contacter directement pour toute question.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2>Envie de nous rencontrer ?</h2>
+          <p>Appelez-nous, écrivez sur WhatsApp, ou passez directement si vous êtes un habitué.</p>
+        </div>
+        <a href="/contact" class="btn btn-gold">Nous contacter</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-header {
+    padding: 128px 0 48px;
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .page-header .blade-mark {
+    color: var(--color-gold);
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .page-subtitle {
+    margin-top: 14px;
+    max-width: 580px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+  }
+
+  .image-text-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .image-text-image {
+    border-radius: 18px;
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .image-text-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-text-content p {
+    color: var(--color-slate);
+    margin-bottom: 14px;
+  }
+
+  .values-section {
+    background: var(--color-bone);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .value-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px 22px;
+    border: 1px solid var(--color-line);
+  }
+
+  .value-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    color: var(--color-gold-deep);
+  }
+
+  .value-card p {
+    color: var(--color-slate);
+    font-size: 0.92rem;
+  }
+
+  .story-section {
+    text-align: center;
+  }
+
+  .story-inner {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .story-section .section-subtitle {
+    margin: 0 auto;
+  }
+
+  .cta-band {
+    background: var(--color-ink);
+    color: #fff;
+    padding: 48px 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .cta-inner h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media (min-width: 640px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 720px) {
+    .page-header {
+      padding: 150px 0 64px;
+    }
+    .page-title {
+      font-size: 2.7rem;
+    }
+    .page-subtitle {
+      font-size: 1.1rem;
+    }
+    .image-text-image {
+      height: 380px;
+    }
+    .cta-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .image-text-inner {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

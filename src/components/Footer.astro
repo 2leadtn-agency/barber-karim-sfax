@@ -1,0 +1,171 @@
+---
+const PHONE_DISPLAY = "+216 53 535 535";
+const PHONE_TEL = "+21653535535";
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <span class="footer-logo-mark"></span>
+        <span class="footer-logo-text"><strong>BARBER</strong> KARIM</span>
+      </a>
+      <p class="footer-tagline">
+        Salon de coiffure homme à Sfax. Coupe, taille de barbe et soin du visage, par une équipe de
+        2 barbiers — sans rendez-vous parfois pour nos clients réguliers.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="/services#coupe">Coupe de cheveux</a></li>
+        <li><a href="/services#barbe">Taille de barbe</a></li>
+        <li><a href="/services#soin-visage">Soin du visage</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/a-propos">À propos</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <ul>
+        <li><a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a></li>
+        <li>Sfax, Tunisie</li>
+        <li class="footer-availability">Sans rendez-vous parfois pour nos habitués</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>Barber Karim — Sfax, Tunisie</p>
+      <p>&copy; {new Date().getFullYear()} Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-ink);
+    color: rgba(255, 255, 255, 0.72);
+    padding: 56px 0 0;
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  .footer-logo-mark {
+    width: 9px;
+    height: 9px;
+    background: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: var(--color-gold);
+  }
+
+  .footer-logo-text strong {
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .footer-tagline {
+    font-size: 0.92rem;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
+  .footer-col h3 {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.92rem;
+    transition: color 0.15s ease;
+  }
+
+  .footer-col a:hover {
+    color: #fff;
+  }
+
+  .footer-col li {
+    font-size: 0.92rem;
+  }
+
+  .footer-availability {
+    color: #fff;
+    font-weight: 600;
+    padding-top: 6px;
+  }
+
+  .footer-bottom {
+    margin-top: 44px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  @media (min-width: 720px) {
+    .footer-inner {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 560px) {
+    .footer-bottom-inner {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>

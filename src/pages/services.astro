@@ -1,0 +1,174 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  {
+    id: "coupe",
+    title: "Coupe de cheveux",
+    image: "/images/service-coupe-cheveux.jpg",
+    text:
+      "Coupe classique, dégradé ou style plus contemporain : chaque coupe est ajustée à la forme de votre visage, à la texture de vos cheveux et à votre routine quotidienne. Le geste est précis, le résultat net, sans temps perdu.",
+  },
+  {
+    id: "barbe",
+    title: "Taille de barbe",
+    image: "/images/service-taille-de-barbe.jpg",
+    text:
+      "De l'entretien léger à la taille précise au rasoir, la barbe est dessinée pour souligner les traits du visage et rester nette entre deux passages. Un savoir-faire qui fait toute la différence sur les contours et la ligne de cou.",
+  },
+  {
+    id: "soin-visage",
+    title: "Soin du visage",
+    image: "/images/service-soin-du-visage.jpg",
+    text:
+      "Un moment de détente en complément de la coupe ou de la barbe : nettoyage, serviette chaude et fini frais. De quoi repartir avec un visage net et une sensation de propreté durable.",
+  },
+];
+---
+
+<Layout
+  title="Services — Barber Karim | Salon de coiffure homme à Sfax"
+  description="Coupe de cheveux, taille de barbe et soin du visage à Sfax. Découvrez les prestations du salon Barber Karim, par une équipe de 2 barbiers."
+>
+  <Nav />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="blade-mark">Nos services</span>
+        <h1 class="page-title">Trois prestations, un même souci du détail</h1>
+        <p class="page-subtitle">
+          Coupe, barbe et soin du visage — chaque prestation est réalisée avec précision, dans une
+          ambiance détendue, sur rendez-vous ou parfois sans pour nos habitués.
+        </p>
+        <a href="/contact" class="btn btn-gold">Nous contacter</a>
+      </div>
+    </section>
+
+    {services.map((service, i) => (
+      <section class="service-detail" id={service.id}>
+        <div class={`container service-detail-inner ${i % 2 === 1 ? "reverse" : ""}`}>
+          <div class="service-detail-image">
+            <img src={service.image} alt={service.title} loading="lazy" />
+          </div>
+          <div class="service-detail-text">
+            <h2>{service.title}</h2>
+            <p>{service.text}</p>
+            <a href="/contact" class="btn btn-outline-dark">Demander cette prestation</a>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="section services-cta-band">
+      <div class="container">
+        <h2 class="section-title">Une question sur nos prestations ?</h2>
+        <p class="section-subtitle">
+          Contactez-nous par téléphone ou WhatsApp — nous vous répondons rapidement pour organiser
+          votre visite.
+        </p>
+        <a href="/contact" class="btn btn-gold">Nous contacter</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-header {
+    padding: 128px 0 48px;
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .page-header .blade-mark {
+    color: var(--color-gold);
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .page-subtitle {
+    margin: 14px 0 26px;
+    max-width: 580px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+  }
+
+  .service-detail {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-detail:nth-child(odd) {
+    background: var(--color-bone);
+  }
+
+  .service-detail-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .service-detail-image {
+    border-radius: 18px;
+    overflow: hidden;
+    height: 220px;
+  }
+
+  .service-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-detail-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .service-detail-text p {
+    color: var(--color-slate);
+    margin-bottom: 20px;
+  }
+
+  .services-cta-band {
+    text-align: center;
+  }
+
+  .services-cta-band .section-subtitle {
+    margin: 0 auto 26px;
+  }
+
+  @media (min-width: 720px) {
+    .page-header {
+      padding: 150px 0 64px;
+    }
+    .page-title {
+      font-size: 2.7rem;
+    }
+    .page-subtitle {
+      font-size: 1.1rem;
+    }
+    .service-detail-image {
+      height: 340px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .service-detail-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .service-detail-inner.reverse .service-detail-image {
+      order: 2;
+    }
+  }
+</style>
